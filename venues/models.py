@@ -12,7 +12,25 @@ class Venues(models.Model):
 	
 	lat = models.CharField(max_length=25,verbose_name=u'Latitud')
 	lng = models.CharField(max_length=25,verbose_name=u'Longitud')
-#	FOREIGN KEY CATEGORIES
+	category = models.ForeignKey(Categories)
+	city = models.ForeignKey(Cities)
+	state = models.ForeignKey(States)
 
 	def __unicode__(self):
         return self.fourSquareId + ' ' + self.name
+
+class Categories(models.model):
+	category = models.CharField(max_length=50,verbose_name=u'Categoria')
+
+	def __unicode__(self):
+        return self.category
+
+class Cities(models.model):
+	city = models.CharField(max_length=25,verbose_name=u'Ciudad')
+	def __unicode__(self):
+        return self.city
+
+class States(object):
+	state = models.CharField(max_length=25,verbose_name=u'Estado')
+	def __unicode__(self):
+        return self.city
